@@ -1,0 +1,28 @@
+name: Esegui Script Python
+
+on:
+  workflow_dispatch: # Permette di avviarlo manualmente dalla pagina Actions
+  schedule:
+    - cron: '0 9 * * *' # Gira tutti i giorni alle 8:00 UTC (modifica a piacimento)
+
+jobs:
+  run-script:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Scarica il codice della repository
+      uses: actions/checkout@v4
+
+    - name: Configura Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.10'
+
+    - name: Installa le dipendenze
+      run: |
+        if [ -f requirements.txt ]; then
+          pip install -r requirements.txt
+        fi
+
+    - name: Esegui lo script
+      run: python orari.py # Sostituisci "nomefile.py" con il nome reale del tuo file
