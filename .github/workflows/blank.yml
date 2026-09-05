@@ -1,9 +1,9 @@
 name: Esegui Script Python
 
 on:
-  workflow_dispatch: # Permette di avviarlo manualmente dalla pagina Actions
+  workflow_dispatch:
   schedule:
-    - cron: '0 9 * * *' # Gira tutti i giorni alle 8:00 UTC (modifica a piacimento)
+    - cron: '0 9 * * *'
 
 jobs:
   run-script:
@@ -25,4 +25,4 @@ jobs:
         fi
 
     - name: Esegui lo script
-      run: python orari.py # Sostituisci "nomefile.py" con il nome reale del tuo file
+      run: python orari.py
